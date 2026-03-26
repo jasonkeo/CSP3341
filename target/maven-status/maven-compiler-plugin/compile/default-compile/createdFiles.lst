@@ -1,2 +1,5 @@
 app/DBConnection.class
+app/LoginPage.class
 app/Main.class
+app/SearchPage.class
+app/InsertPage.class
