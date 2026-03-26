@@ -1,17 +1,18 @@
-package app;
+package app.pages;
 
 import javax.swing.*;
+
+import app.Main;
+import app.logic.*;
 import java.awt.*;
 
-import java.util.Arrays;
-
 public class LoginPage extends JPanel {
+    Logic logic = new Logic();
+
     private JLabel userLabel, passwordLabel, validateLabel;
     private JTextField userText;
     private JPasswordField password;
     private JButton logButton;
-    private String username = "root";
-    private char[] correctPassword = { 'r','o','o','t','1','2','3' };
 
     public LoginPage(Main app) {
         setLayout(new FlowLayout());
@@ -35,7 +36,7 @@ public class LoginPage extends JPanel {
             String usr = userText.getText();
             char[] input = password.getPassword();
 
-            if (usr.equals(username) && Arrays.equals(input, correctPassword)) {
+            if (logic.checkLogin(usr, input)) {
                 validateLabel.setText("Login successful");
                 app.showPage("page1"); // go to search page
             } else {
@@ -43,4 +44,5 @@ public class LoginPage extends JPanel {
             }
         });
     }
+
 }

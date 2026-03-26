@@ -1,7 +1,11 @@
 package app;
 
 import javax.swing.*;
+
+import app.logic.DBConnection;
+
 import java.awt.*;
+import app.pages.*;
 
 public class Main {
 
@@ -40,20 +44,31 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main();  // GUI opens from constructor
+        new Main(); // GUI opens from constructor
     }
 
     // ================= DATABASE INIT =================
     public static void initDatabase() {
         try (var conn = DBConnection.connect();
-             var stmt = conn.createStatement()) {
+                var stmt = conn.createStatement()) {
 
             stmt.executeUpdate("""
-                CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT
-                )
-            """);
+                    CREATE TABLE IF NOT EXISTS users (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        firstName TEXT NOT NULL,
+                        lastName TEXT NOT NULL,
+                        username TEXT UNIQUE NOT NULL,
+                        password TEXT NOT NULL,
+                        role TEXT NOT NULL
+                    );
+
+
+                                    """);
+
+            stmt.executeUpdate("""
+                        INSERT OR IGNORE INTO users (firstName, lastName, username, password, role)
+                        VALUES ('Mark', 'Grayson', 'mgrayson', 'admin', 'admin')
+                    """);
 
             System.out.println("Database ready");
 
