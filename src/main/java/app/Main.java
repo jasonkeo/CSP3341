@@ -2,18 +2,19 @@ package app;
 
 import javax.swing.*;
 
+import app.logic.UserSession;
 import app.logic.DBConnection;
 
 import java.awt.*;
 import app.pages.*;
 
 public class Main {
-
+    private UserSession currentSession;
     private CardLayout cardLayout;
     private JPanel container;
 
     public Main() {
-        initDatabase();
+        DBConnection.initDatabase();
         UserPage(); // launch GUI
     }
 
@@ -47,33 +48,12 @@ public class Main {
         new Main(); // GUI opens from constructor
     }
 
-    // ================= DATABASE INIT =================
-    public static void initDatabase() {
-        try (var conn = DBConnection.connect();
-                var stmt = conn.createStatement()) {
-
-            stmt.executeUpdate("""
-                    CREATE TABLE IF NOT EXISTS users (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        firstName TEXT NOT NULL,
-                        lastName TEXT NOT NULL,
-                        username TEXT UNIQUE NOT NULL,
-                        password TEXT NOT NULL,
-                        role TEXT NOT NULL
-                    );
-
-
-                                    """);
-
-            stmt.executeUpdate("""
-                        INSERT OR IGNORE INTO users (firstName, lastName, username, password, role)
-                        VALUES ('Mark', 'Grayson', 'mgrayson', 'admin', 'admin')
-                    """);
-
-            System.out.println("Database ready");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setSession(UserSession session) {
+        this.currentSession = session;
     }
+
+    public UserSession getSession() {
+        return this.currentSession;
+    }
+
 }

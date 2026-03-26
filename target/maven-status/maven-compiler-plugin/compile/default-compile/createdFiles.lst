@@ -1,5 +1,7 @@
-app/DBConnection.class
-app/LoginPage.class
 app/Main.class
-app/SearchPage.class
-app/InsertPage.class
+app/pages/InsertPage.class
+app/logic/UserSession.class
+app/logic/DBConnection.class
+app/logic/Logic.class
+app/pages/SearchPage.class
+app/pages/LoginPage.class

@@ -7,18 +7,25 @@ import app.Main;
 
 public class SearchPage extends JPanel {
     Logic logic = new Logic();
+    private Main app;
 
     public SearchPage(Main app) {
-
+        this.app = app;
+        UserSession session = app.getSession();
         JTextField text = new JTextField(15);
         JButton searchBtn = new JButton("Search");
-        JButton goToInsert = new JButton("Go to Insert Page");
+        if (session != null && session.role.equals("admin")) {
+            JButton goToInsert = new JButton("Go to Insert Page");
+            add(goToInsert);
+
+            goToInsert.addActionListener(e -> app.showPage("page2"));
+        }
         JLabel resultLabel = new JLabel("Result: ");
 
         add(new JLabel("Search Page"));
         add(text);
         add(searchBtn);
-        add(goToInsert);
+
         add(resultLabel);
 
         searchBtn.addActionListener(e -> {
@@ -26,7 +33,6 @@ public class SearchPage extends JPanel {
             resultLabel.setText("Result: " + result);
         });
 
-        goToInsert.addActionListener(e -> app.showPage("page2"));
     }
 
 }

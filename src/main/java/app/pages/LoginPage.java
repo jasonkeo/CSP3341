@@ -35,8 +35,9 @@ public class LoginPage extends JPanel {
         logButton.addActionListener(e -> {
             String usr = userText.getText();
             char[] input = password.getPassword();
-
-            if (logic.checkLogin(usr, input)) {
+            UserSession session = logic.checkLogin(usr, input);
+            if (session != null) {
+                app.setSession(session);
                 validateLabel.setText("Login successful");
                 app.showPage("page1"); // go to search page
             } else {

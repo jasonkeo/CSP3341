@@ -11,7 +11,7 @@ public class Logic {
     }
 
     // Hash password using SHA-256
-    private String hashPassword(String password) throws Exception {
+    public static String hashPassword(String password) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashedBytes = md.digest(password.getBytes("UTF-8"));
         StringBuilder sb = new StringBuilder();
@@ -55,11 +55,10 @@ public class Logic {
         }
     }
 
-    // Check login credentials
-    public boolean checkLogin(String usernameInput, char[] passwordInput) {
+    public UserSession checkLogin(String usernameInput, char[] passwordInput) {
         try (Connection conn = DBConnection.connect();
                 PreparedStatement stmt = conn.prepareStatement(
-                        "SELECT password FROM users WHERE username = ?")) {
+                        "SELECT password, role FROM users WHERE username = ?")) {
 
             stmt.setString(1, usernameInput);
             ResultSet rs = stmt.executeQuery();
@@ -67,13 +66,18 @@ public class Logic {
             if (rs.next()) {
                 String storedHash = rs.getString("password");
                 String inputHash = hashPassword(new String(passwordInput));
-                return storedHash.equals(inputHash);
+
+                if (storedHash.equals(inputHash)) {
+                    String role = rs.getString("role");
+                    return new UserSession(usernameInput, role); // login success
+                }
             }
-            return false;
+
+            return null; // login failed
 
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 

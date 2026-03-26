@@ -1,5 +1,7 @@
-/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/DBConnection.java
-/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/InsertPage.java
-/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/LoginPage.java
 /Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/Main.java
-/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/SearchPage.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/logic/DBConnection.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/logic/Logic.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/logic/UserSession.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/pages/InsertPage.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/pages/LoginPage.java
+/Users/jasonkeo/Library/CloudStorage/OneDrive-EdithCowanUniversity/2026/Sem 1/Programming/program/apptest/src/main/java/app/pages/SearchPage.java
