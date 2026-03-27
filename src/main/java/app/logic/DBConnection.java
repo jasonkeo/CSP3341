@@ -20,7 +20,6 @@ public class DBConnection {
         return conn;
     }
 
-    // ================= DATABASE INIT =================
     public static void initDatabase() {
         try (var conn = DBConnection.connect();
                 var stmt = conn.createStatement()) {

@@ -5,12 +5,10 @@ import java.security.MessageDigest;
 
 public class Logic {
 
-    // Generate username: first letter of firstName + lastName (lowercase)
     private String generateUsername(String firstName, String lastName) {
         return (firstName.charAt(0) + lastName).toLowerCase();
     }
 
-    // Hash password using SHA-256
     public static String hashPassword(String password) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashedBytes = md.digest(password.getBytes("UTF-8"));
@@ -21,18 +19,17 @@ public class Logic {
         return sb.toString();
     }
 
-    // Insert a new user into the database
     public boolean insertUser(String firstName, String lastName, char[] password, String role) {
         String username = generateUsername(firstName, lastName);
 
         try (Connection conn = DBConnection.connect()) {
-            // Check if username already exists
+
             PreparedStatement check = conn.prepareStatement(
                     "SELECT username FROM users WHERE username = ?");
             check.setString(1, username);
             ResultSet rs = check.executeQuery();
             if (rs.next())
-                return false; // username exists
+                return false;
 
             // Hash the password
             String hashed = hashPassword(new String(password));
