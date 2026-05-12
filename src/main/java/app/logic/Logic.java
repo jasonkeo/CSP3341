@@ -31,10 +31,10 @@ public class Logic {
             if (rs.next())
                 return false;
 
-            // Hash the password
+
             String hashed = hashPassword(new String(password));
 
-            // Insert user into database
+
             PreparedStatement stmt = conn.prepareStatement(
                     "INSERT INTO users(firstName, lastName, username, password, role) VALUES(?, ?, ?, ?, ?)");
             stmt.setString(1, firstName);

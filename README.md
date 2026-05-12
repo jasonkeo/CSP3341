@@ -26,4 +26,4 @@ The system is designed to meet the following functional requirements:
 Run the following command to compile and package the application: 'mvn clean package'
 
 ### 3. Run
-After building, run the generated `.jar` file: 'java -jar target/<your-jar-file>.jar'
+After building, run the generated `.jar` file: 'java -jar target/student-app-1.0.jar'
