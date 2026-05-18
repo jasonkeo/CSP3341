@@ -9,4 +9,8 @@ public class UserSession {
         this.username = username;
         this.role = role;
     }
+
+    public boolean isAdmin() {
+        return "admin".equals(role);
+    }
 }

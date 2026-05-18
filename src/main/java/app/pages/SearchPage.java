@@ -7,14 +7,14 @@ import app.Main;
 
 public class SearchPage extends JPanel {
     Logic logic = new Logic();
-    private Main app;
+    public Main app;
 
     public SearchPage(Main app) {
         this.app = app;
         UserSession session = app.getSession();
         JTextField text = new JTextField(15);
         JButton searchBtn = new JButton("Search");
-        if (session != null && session.role.equals("admin")) {
+        if (true) {
             JButton goToInsert = new JButton("Go to Insert Page");
             add(goToInsert);
 
